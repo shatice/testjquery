@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Titre de la page</title>
+  <style>
+		section:nth-child(2), section:nth-child(3) {
+			display: none; 
+		}
+  </style>
+</head>
+<body>
+	<section>
+		<label>Je souhaite ? ... |</label>
+		<select id="site-type">
+		</select>
+	</section>
+
+	<section class="news">
+		<label>Mon besoin ? ...</label>
+		<select id="actu">
+		</select>
+	</section>
+
+  <script src="jquery-3.4.1.min.js"></script>
+  <script>
+	var json = {
+		"dev" : {
+			"google" : "https://google.com",
+			"jquery" : "https://jquery.com/download/"
+		},
+		"actualité":{
+			"googlenews" : "https://news.google.com/",
+			"orangenews" : "https://actu.orange.fr/",
+		},
+		"socialnetwork":{
+			"facebook" : "https://www.facebook.com",
+			"instagram" : "https://www.instagram.com"
+		}
+	}
+
+	let select = $("select"),
+			choice1,
+			choice2; 
+
+
+
+	$.each(json, function(key, value){
+		select.append('<option value="google" class="choice1">' + key + '</option>'); 
+		select.change(function() {
+			$('section:nth-child(2)').css('display', 'block');
+		})
+	});
+
+	// var test = "socialnetwork";
+	// console.log(json[test], json.socialnetwork);
+
+	/*<option value="google" class="choice1">Google</option>*/
+	// select.each(function() {
+		// $(select).change(function() {
+		// 	if(select.val() === 'jquery') {
+		// 		$('section:nth-child(2)').css('display', 'block');
+		// 		choice1 = $('.choice1').html(json.actualité.googlenews);
+		// 	}
+		// 	if(select.val() === 'orangeNews') {
+		// 		$('section:nth-child(3)').css('display', 'block');
+		// 		choice1 = $('.choice1').html(json.socialnetwork.facebook);
+		// 	}
+		// })
+	// });
+	// $(this).after('<section class="news"><label>Mon besoin ? ...</label><select id="actu"><option value="googleNews">Google News</option><option value="orangeNews">Orange News</option></select></section>');
+
+	// let select = $( "#dev" ).append('<option value="google">' + json.dev.google + '</option>')
+	// console.log(json.dev.google);
+  </script>
+</body>
+</html>
